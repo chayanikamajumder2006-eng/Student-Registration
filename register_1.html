@@ -211,7 +211,17 @@
                                 required
                             >
                         </div>
-
+<div class="form-group">
+  <label for="otherLanguages">
+    Other Languages Known
+  </label>
+  <input
+    type="text"
+    id="otherLanguages"
+    name="otherLanguages"
+    placeholder="Enter other languages (e.g., English, Hindi or any other languages)"
+  >
+</div>
                         <div class="form-group">
                             <label for="aadhar">
                                 Aadhaar Number
@@ -244,7 +254,7 @@
                                 name="pan"
                                 maxlength="10"
                                 pattern="[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}"
-                                placeholder="Example: ABCDE1234F"
+                                placeholder=" "
                                 required
                             >
                         </div>
@@ -267,128 +277,7 @@
 
                 </section>
 
-                <!-- Physical Attributes -->
-                <section class="form-section physical-section">
-
-                    <div class="section-heading">
-
-                        <div class="section-icon">🏃</div>
-
-                        <div>
-                            <span class="section-number">Section 2</span>
-                            <h2>Physical Attributes</h2>
-                            <p>Provide basic physical and identification details.</p>
-                        </div>
-
-                    </div>
-
-                    <div class="form-grid">
-
-                        <div class="form-group">
-                            <label for="height">
-                                Height
-                                <span class="required">*</span>
-                            </label>
-
-                            <div class="input-with-unit">
-                                <input
-                                    type="number"
-                                    id="height"
-                                    name="height"
-                                    min="50"
-                                    max="250"
-                                    placeholder="Enter height"
-                                    required
-                                >
-
-                                <span>cm</span>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="weight">
-                                Weight
-                                <span class="required">*</span>
-                            </label>
-
-                            <div class="input-with-unit">
-                                <input
-                                    type="number"
-                                    id="weight"
-                                    name="weight"
-                                    min="10"
-                                    max="300"
-                                    step="0.1"
-                                    placeholder="Enter weight"
-                                    required
-                                >
-
-                                <span>kg</span>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="visionL">
-                                Left Eye Vision
-                                <span class="required">*</span>
-                            </label>
-
-                            <input
-                                type="text"
-                                id="visionL"
-                                name="visionL"
-                                placeholder="Example: 6/6"
-                                required
-                            >
-                        </div>
-
-                        <div class="form-group">
-                            <label for="visionR">
-                                Right Eye Vision
-                                <span class="required">*</span>
-                            </label>
-
-                            <input
-                                type="text"
-                                id="visionR"
-                                name="visionR"
-                                placeholder="Example: 6/6"
-                                required
-                            >
-                        </div>
-
-                        <div class="form-group">
-                            <label for="mark1">
-                                Identification Mark 1
-                                <span class="required">*</span>
-                            </label>
-
-                            <input
-                                type="text"
-                                id="mark1"
-                                name="mark1"
-                                placeholder="Example: Mole on left hand"
-                                required
-                            >
-                        </div>
-
-                        <div class="form-group">
-                            <label for="mark2">
-                                Identification Mark 2
-                                <span class="optional">(Optional)</span>
-                            </label>
-
-                            <input
-                                type="text"
-                                id="mark2"
-                                name="mark2"
-                                placeholder="Enter another identification mark"
-                            >
-                        </div>
-
-                    </div>
-
-                </section>
+                
 
                 <!-- Family Background -->
                 <section class="form-section family-section">
@@ -534,8 +423,64 @@
                             >
                         </div>
 
-                    </div>
+                 
+<div class="form-group">
+  <label for="emergencyPhone">
+    Emergency Contact Number
+    <span class="required">*</span>
+  </label>
+  <input
+    type="tel"
+    id="emergencyPhone"
+    name="emergencyPhone"
+    maxlength="10"
+    pattern="[0-9]{10}"
+    inputmode="numeric"
+    placeholder="Enter 10-digit emergency number"
+    required
+  >
+</div>
+                        <!-- Local Guardian Name -->
+<div class="form-group">
+  <label for="localGuardianName">
+    Local Guardian Name (Optional)
+  </label>
+  <input
+    type="text"
+    id="localGuardianName"
+    name="localGuardianName"
+    placeholder="Enter local guardian name (if any)"
+  >
+</div>
 
+<!-- Local Guardian Address -->
+<div class="form-group">
+  <label for="localGuardianAddress">
+    Local Guardian Address (Optional)
+  </label>
+  <textarea
+    id="localGuardianAddress"
+    name="localGuardianAddress"
+    rows="3"
+    placeholder="Enter local guardian address (if any)"
+  ></textarea>
+</div>
+
+<!-- Local Guardian Contact Number (Already in your image) -->
+<div class="form-group">
+  <label for="localGuardianPhone">
+    Local Guardian Contact Number (Optional)
+  </label>
+  <input
+    type="tel"
+    id="localGuardianPhone"
+    name="localGuardianPhone"
+    maxlength="10"
+    pattern="[0-9]{10}"
+    inputmode="numeric"
+    placeholder="Enter 10-digit number (if any)"
+  >
+</div>
                 </section>
 
                 <!-- Address Details -->
@@ -675,30 +620,128 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="distance">
-                                Distance to College
+  <label for="postOffice">
+    Post Office
+    <span class="required">*</span>
+  </label>
+  <input
+    type="text"
+    id="postOffice"
+    name="postOffice"
+    placeholder="Enter Post Office"
+    required
+  >
+</div>
+
+                    </div>
+
+                </section>
+<!-- Physical Attributes -->
+                <section class="form-section physical-section">
+
+                    <div class="section-heading">
+
+                        <div class="section-icon">🏃</div>
+
+                        <div>
+                            <span class="section-number">Section 2</span>
+                            <h2>Physical Attributes</h2>
+                            <p>Provide basic physical and identification details.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="height">
+                                Height
                                 <span class="required">*</span>
                             </label>
 
                             <div class="input-with-unit">
                                 <input
                                     type="number"
-                                    id="distance"
-                                    name="distance"
-                                    min="0"
-                                    step="0.1"
-                                    placeholder="Enter distance"
+                                    id="height"
+                                    name="height"
+                                    min="50"
+                                    max="250"
+                                    placeholder="Enter height"
                                     required
                                 >
 
-                                <span>km</span>
+                                <span>cm</span>
                             </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="weight">
+                                Weight
+                                <span class="required">*</span>
+                            </label>
+
+                            <div class="input-with-unit">
+                                <input
+                                    type="number"
+                                    id="weight"
+                                    name="weight"
+                                    min="10"
+                                    max="300"
+                                    step="0.1"
+                                    placeholder="Enter weight"
+                                    required
+                                >
+
+                                <span>kg</span>
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="form-group">
+  <label for="disability">
+    Person with Disability (PwD)
+    <span class="required">*</span>
+  </label>
+  <select id="disability" name="disability" required>
+    <option value="" disabled selected>Select an option</option>
+    <option value="No">No</option>
+    <option value="Yes">Yes</option>
+  </select>
+</div>
+
+                        <div class="form-group">
+                            <label for="mark1">
+                                Identification Mark 1
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="mark1"
+                                name="mark1"
+                                placeholder="Example: Mole on left hand"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mark2">
+                                Identification Mark 2
+                                <span class="optional">(Optional)</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="mark2"
+                                name="mark2"
+                                placeholder="Enter another identification mark"
+                            >
                         </div>
 
                     </div>
 
                 </section>
-
                 <!-- Confirmation -->
                 <section class="declaration-box">
 
