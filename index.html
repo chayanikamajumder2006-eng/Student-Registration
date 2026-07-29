@@ -3,40 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Login Portal</title>
+    <title>College Registration - Step 1/3</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container login-container">
+    <div class="container">
         <div class="portal-header">
-            <h2>Student Login Portal</h2>
-            <p>Access your academic dashboard</p>
+            <h2>Student Registration (Step 1/3)</h2>
+            <p>Personal, Health, Family & Local Guardian Details</p>
         </div>
-        
-        <form onsubmit="handleLogin(event)">
-            <div class="form-group">
-                <label for="email">Registered Email Address</label>
-                <input type="email" id="email" placeholder="name@example.com" required>
-            </div>
+
+        <form onsubmit="navigateTo('register_2.html', event)">
             
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" placeholder="••••••••" required>
-            </div>
-
-            <div class="form-group captcha-block">
-                <label for="captcha">Security Verification</label>
-                <div class="captcha-container">
-                    <canvas id="captcha-canvas" width="180" height="50" onclick="generateCaptcha()"></canvas>
-                    <button type="button" class="refresh-btn" onclick="generateCaptcha()" title="Refresh CAPTCHA">↻</button>
+            <!-- Section 1: Identity -->
+            <div class="section-card">
+                <h3 class="section-title">1. Identity Details</h3>
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label for="name">Full Name (As per 10th Certificate)</label>
+                        <input type="text" id="name" placeholder="" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">Date of Birth</label>
+                        <input type="date" id="dob" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <select id="gender" required>
+                            <option value="">Select</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="blood">Blood Group</label>
+                        <select id="blood" required>
+                            <option value="">Select</option>
+                            <option>A+</option><option>A-</option>
+                            <option>B+</option><option>B-</option>
+                            <option>O+</option><option>O-</option>
+                            <option>AB+</option><option>AB-</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="religion">Religion</label>
+                        <input type="text" id="religion" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="caste">Caste Category</label>
+                        <select id="caste" required>
+                            <option value="">Select</option>
+                            <option>General</option>
+                            <option>OBC</option>
+                            <option>SC</option>
+                            <option>ST</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="language">Mother Tongue</label>
+                        <input type="text" id="language" placeholder="e.g., Bengali, Hindi" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="otherLanguages">Other Languages Known</label>
+                        <input type="text" id="otherLanguages" placeholder="e.g., English, Spanish">
+                    </div>
+                    <div class="form-group">
+                        <label for="aadhar">Aadhaar Number</label>
+                        <input type="text" id="aadhar" pattern="\d{12}" placeholder="12-digit number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pan">PAN Card Number</label>
+                        <input type="text" id="pan" placeholder=""required>
+                    </div>
+                    <div class="form-group">
+                        <label for="passport">Passport Number</label>
+                        <input type="text" id="passport" placeholder="Optional">
+                    </div>
                 </div>
-                <input type="text" id="captcha" required placeholder="Enter CAPTCHA (Case Sensitive)">
             </div>
 
-            <div id="error-msg" class="error"></div>
+            <!-- Section 2: Physical & Medical -->
+            <div class="section-card">
+                <h3 class="section-title">2. Physical & Health Details</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="height">Height (cm)</label>
+                        <input type="number" id="height" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="weight">Weight (kg)</label>
+                        <input type="number" id="weight" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="disabilitySelect">Disability Status</label>
+                        <select id="disabilitySelect" required onchange="toggleDisabilityDetail()">
+                            <option value="">Select</option>
+                            <option value="No">None</option>
+                            <option value="Yes">Yes (Specify below)</option>
+                        </select>
+                    </div>
+                    <div class="form-group half-width">
+                        <label for="disabilityDetail">Disability Details (If Any)</label>
+                        <input type="text" id="disabilityDetail" placeholder="Optional / Specify if applicable">
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="allergies">Allergies or Medical Conditions (If Any)</label>
+                        <input type="text" id="allergies" placeholder="e.g. Dust allergy, Penicillin, Asthmatic, None">
+                    </div>
+                </div>
+            </div>
 
-            <button type="submit" class="btn btn-primary">Secure Login</button>
-            <a href="register_1.html" class="link">New student? Register Here</a>
+            <!-- Section 3: Family Background -->
+            <div class="section-card">
+                <h3 class="section-title">3. Family Background</h3>
+                <div class="form-grid">
+                    <div class="form-group"><label for="fname">Father's Name</label><input type="text" id="fname" required></div>
+                    <div class="form-group"><label for="focc">Father's Occupation</label><input type="text" id="focc" required></div>
+                    <div class="form-group"><label for="finc">Father's Annual Income (₹)</label><input type="number" id="finc" required></div>
+                    <div class="form-group"><label for="mname">Mother's Name</label><input type="text" id="mname" required></div>
+                    <div class="form-group"><label for="mocc">Mother's Occupation</label><input type="text" id="mocc" required></div>
+                    <div class="form-group"><label for="minc">Mother's Annual Income (₹)</label><input type="number" id="minc" required></div>
+                    <div class="form-group"><label for="siblings">Number of Siblings</label><input type="number" id="siblings" required></div>
+                </div>
+            </div>
+
+            <!-- Section 4: Local Guardian Details (Optional) -->
+            <div class="section-card">
+                <h3 class="section-title">4. Local Guardian Details (Optional)</h3>
+                <div class="form-grid">
+                    <div class="form-group"><label for="lgName">Guardian Name</label><input type="text" id="lgName" placeholder="Optional"></div>
+                    <div class="form-group"><label for="lgRelation">Relation</label><input type="text" id="lgRelation" placeholder="e.g. Uncle, Aunt"></div>
+                    <div class="form-group"><label for="lgPhone">Contact Number</label><input type="text" id="lgPhone" placeholder="10-digit phone"></div>
+                    <div class="form-group full-width"><label for="lgAddress">Guardian Address</label><textarea id="lgAddress" placeholder="Local address of guardian"></textarea></div>
+                </div>
+            </div>
+
+            <!-- Section 5: Address Details -->
+            <div class="section-card">
+                <h3 class="section-title">5. Permanent Address & Logistics</h3>
+                <div class="form-grid">
+                    <div class="form-group full-width"><label for="permAddr">Permanent Address</label><textarea id="permAddr" required></textarea></div>
+                    <div class="form-group"><label for="city">City/Village</label><input type="text" id="city" required></div>
+                    <div class="form-group"><label for="state">State</label><input type="text" id="state" required></div>
+                    <div class="form-group"><label for="pin">ZIP / Pincode</label><input type="number" id="pin" required></div>
+                    <div class="form-group"><label for="postOffice">Post Office</label><input type="text" id="postOffice" required></div>
+                    <div class="form-group"><label for="railway">Nearest Railway Station</label><input type="text" id="railway" required></div>
+                    <div class="form-group"><label for="police">Nearest Police Station</label><input type="text" id="police" required></div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Proceed to Academic Details (Step 2) →</button>
         </form>
     </div>
     <script src="app.js"></script>
