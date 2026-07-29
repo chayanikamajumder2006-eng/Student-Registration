@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>College Registration - Step 1 of 3</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Decorative background circles -->
+    <div class="background-circle circle-one"></div>
+    <div class="background-circle circle-two"></div>
+    <div class="background-circle circle-three"></div>
+
+    <main class="registration-wrapper">
+
+        <!-- Registration card -->
+        <div class="container">
+
+            <!-- Header -->
+            <header class="page-header">
+
+                <div class="college-logo">🎓</div>
+
+                <div>
+                    <p class="portal-name">
+                        Student Admission Portal
+                    </p>
+
+                    <h1>College Registration Form</h1>
+
+                    <p class="header-description">
+                        Complete your personal, physical, family and address
+                        details.
+                    </p>
+                </div>
+
+            </header>
+
+            <!-- Progress section -->
+            <section class="progress-section">
+
+                <div class="progress-information">
+                    <span>Registration Progress</span>
+                    <strong>Step 1 of 3</strong>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-value"></div>
+                </div>
+
+                <div class="steps">
+
+                    <div class="step active">
+                        <span>1</span>
+                        <p>Personal Details</p>
+                    </div>
+
+                    <div class="step">
+                        <span>2</span>
+                        <p>Academic Details</p>
+                    </div>
+
+                    <div class="step">
+                        <span>3</span>
+                        <p>Documents</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <form
+                id="registrationForm"
+                onsubmit="navigateTo('register_2.html', event)"
+            >
+
+                <!-- Identity Details -->
+                <section class="form-section identity-section">
+
+                    <div class="section-heading">
+
+                        <div class="section-icon">👤</div>
+
+                        <div>
+                            <span class="section-number">Section 1</span>
+                            <h2>Identity Details</h2>
+                            <p>Enter your official personal information.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div class="form-group full-width">
+                            <label for="name">
+                                Full Name
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="Enter name as per 10th certificate"
+                                autocomplete="name"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dob">
+                                Date of Birth
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="date"
+                                id="dob"
+                                name="dob"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="gender">
+                                Gender
+                                <span class="required">*</span>
+                            </label>
+
+                            <select id="gender" name="gender" required>
+                                <option value="">Select gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                                <option value="Prefer not to say">
+                                    Prefer not to say
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="blood">
+                                Blood Group
+                                <span class="required">*</span>
+                            </label>
+
+                            <select id="blood" name="blood" required>
+                                <option value="">Select blood group</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="religion">
+                                Religion
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="religion"
+                                name="religion"
+                                placeholder="Enter religion"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="caste">
+                                Caste Category
+                                <span class="required">*</span>
+                            </label>
+
+                            <select id="caste" name="caste" required>
+                                <option value="">Select category</option>
+                                <option value="General">General</option>
+                                <option value="OBC">OBC</option>
+                                <option value="SC">SC</option>
+                                <option value="ST">ST</option>
+                                <option value="EWS">EWS</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="language">
+                                Mother Tongue
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="language"
+                                name="language"
+                                placeholder="Enter mother tongue"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="aadhar">
+                                Aadhaar Number
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="aadhar"
+                                name="aadhar"
+                                maxlength="12"
+                                pattern="[0-9]{12}"
+                                inputmode="numeric"
+                                placeholder="Enter 12-digit Aadhaar number"
+                                required
+                            >
+
+                            <small>Enter numbers only, without spaces.</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pan">
+                                PAN Card Number
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="pan"
+                                name="pan"
+                                maxlength="10"
+                                pattern="[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}"
+                                placeholder="Example: ABCDE1234F"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="passport">
+                                Passport Number
+                                <span class="optional">(Optional)</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="passport"
+                                name="passport"
+                                placeholder="Enter passport number"
+                            >
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- Physical Attributes -->
+                <section class="form-section physical-section">
+
+                    <div class="section-heading">
+
+                        <div class="section-icon">🏃</div>
+
+                        <div>
+                            <span class="section-number">Section 2</span>
+                            <h2>Physical Attributes</h2>
+                            <p>Provide basic physical and identification details.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="height">
+                                Height
+                                <span class="required">*</span>
+                            </label>
+
+                            <div class="input-with-unit">
+                                <input
+                                    type="number"
+                                    id="height"
+                                    name="height"
+                                    min="50"
+                                    max="250"
+                                    placeholder="Enter height"
+                                    required
+                                >
+
+                                <span>cm</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="weight">
+                                Weight
+                                <span class="required">*</span>
+                            </label>
+
+                            <div class="input-with-unit">
+                                <input
+                                    type="number"
+                                    id="weight"
+                                    name="weight"
+                                    min="10"
+                                    max="300"
+                                    step="0.1"
+                                    placeholder="Enter weight"
+                                    required
+                                >
+
+                                <span>kg</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="visionL">
+                                Left Eye Vision
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="visionL"
+                                name="visionL"
+                                placeholder="Example: 6/6"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="visionR">
+                                Right Eye Vision
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="visionR"
+                                name="visionR"
+                                placeholder="Example: 6/6"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mark1">
+                                Identification Mark 1
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="mark1"
+                                name="mark1"
+                                placeholder="Example: Mole on left hand"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mark2">
+                                Identification Mark 2
+                                <span class="optional">(Optional)</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="mark2"
+                                name="mark2"
+                                placeholder="Enter another identification mark"
+                            >
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- Family Background -->
+                <section class="form-section family-section">
+
+                    <div class="section-heading">
+
+                        <div class="section-icon">👨‍👩‍👧‍👦</div>
+
+                        <div>
+                            <span class="section-number">Section 3</span>
+                            <h2>Family Background</h2>
+                            <p>Enter your parent or guardian information.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="fname">
+                                Father's Name
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="fname"
+                                name="fname"
+                                placeholder="Enter father's full name"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="focc">
+                                Father's Occupation
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="focc"
+                                name="focc"
+                                placeholder="Enter occupation"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="finc">
+                                Father's Annual Income (₹)
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="number"
+                                id="finc"
+                                name="finc"
+                                min="0"
+                                placeholder="Enter annual income"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mname">
+                                Mother's Name
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="mname"
+                                name="mname"
+                                placeholder="Enter mother's full name"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mocc">
+                                Mother's Occupation
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="mocc"
+                                name="mocc"
+                                placeholder="Enter occupation"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="minc">
+                                Mother's Annual Income (₹)
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="number"
+                                id="minc"
+                                name="minc"
+                                min="0"
+                                placeholder="Enter annual income"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="siblings">
+                                Number of Siblings
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="number"
+                                id="siblings"
+                                name="siblings"
+                                min="0"
+                                max="20"
+                                placeholder="Enter number of siblings"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="guardianPhone">
+                                Guardian Contact Number
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="guardianPhone"
+                                name="guardianPhone"
+                                maxlength="10"
+                                pattern="[0-9]{10}"
+                                inputmode="numeric"
+                                placeholder="Enter 10-digit number"
+                                required
+                            >
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- Address Details -->
+                <section class="form-section address-section">
+
+                    <div class="section-heading">
+
+                        <div class="section-icon">📍</div>
+
+                        <div>
+                            <span class="section-number">Section 4</span>
+                            <h2>Address and Logistics</h2>
+                            <p>Provide your permanent residential details.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div class="form-group full-width">
+                            <label for="permAddr">
+                                Permanent Address
+                                <span class="required">*</span>
+                            </label>
+
+                            <textarea
+                                id="permAddr"
+                                name="permAddr"
+                                rows="4"
+                                placeholder="House number, street, area and landmark"
+                                required
+                            ></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="city">
+                                City or Village
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="city"
+                                name="city"
+                                placeholder="Enter city or village"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="state">
+                                State
+                                <span class="required">*</span>
+                            </label>
+
+                            <select id="state" name="state" required>
+                                <option value="">Select state</option>
+                                <option>Andhra Pradesh</option>
+                                <option>Arunachal Pradesh</option>
+                                <option>Assam</option>
+                                <option>Bihar</option>
+                                <option>Chhattisgarh</option>
+                                <option>Goa</option>
+                                <option>Gujarat</option>
+                                <option>Haryana</option>
+                                <option>Himachal Pradesh</option>
+                                <option>Jharkhand</option>
+                                <option>Karnataka</option>
+                                <option>Kerala</option>
+                                <option>Madhya Pradesh</option>
+                                <option>Maharashtra</option>
+                                <option>Manipur</option>
+                                <option>Meghalaya</option>
+                                <option>Mizoram</option>
+                                <option>Nagaland</option>
+                                <option>Odisha</option>
+                                <option>Punjab</option>
+                                <option>Rajasthan</option>
+                                <option>Sikkim</option>
+                                <option>Tamil Nadu</option>
+                                <option>Telangana</option>
+                                <option>Tripura</option>
+                                <option>Uttar Pradesh</option>
+                                <option>Uttarakhand</option>
+                                <option>West Bengal</option>
+                                <option>Delhi</option>
+                                <option>Other Union Territory</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pin">
+                                ZIP or PIN Code
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="pin"
+                                name="pin"
+                                maxlength="6"
+                                pattern="[0-9]{6}"
+                                inputmode="numeric"
+                                placeholder="Enter 6-digit PIN code"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="railway">
+                                Nearest Railway Station
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="railway"
+                                name="railway"
+                                placeholder="Enter railway station"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="police">
+                                Nearest Police Station
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="police"
+                                name="police"
+                                placeholder="Enter police station"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="distance">
+                                Distance to College
+                                <span class="required">*</span>
+                            </label>
+
+                            <div class="input-with-unit">
+                                <input
+                                    type="number"
+                                    id="distance"
+                                    name="distance"
+                                    min="0"
+                                    step="0.1"
+                                    placeholder="Enter distance"
+                                    required
+                                >
+
+                                <span>km</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- Confirmation -->
+                <section class="declaration-box">
+
+                    <label class="checkbox-label">
+
+                        <input
+                            type="checkbox"
+                            id="declaration"
+                            required
+                        >
+
+                        <span>
+                            I confirm that the information provided above is
+                            correct and complete.
+                        </span>
+
+                    </label>
+
+                </section>
+
+                <!-- Form message -->
+                <div id="formMessage" class="form-message"></div>
+
+                <!-- Buttons -->
+                <div class="button-area">
+
+                    <button
+                        type="reset"
+                        class="btn reset-btn"
+                        onclick="clearSavedForm()"
+                    >
+                        Clear Form
+                    </button>
+
+                    <button type="submit" class="btn next-btn">
+                        Save and Continue
+                        <span>→</span>
+                    </button>
+
+                </div>
+
+            </form>
+
+            <footer class="form-footer">
+                <span>🔒</span>
+                Your personal information will remain secure and confidential.
+            </footer>
+
+        </div>
+
+    </main>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
