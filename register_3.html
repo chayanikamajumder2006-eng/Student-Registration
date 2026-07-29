@@ -1,729 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>
-        College Registration - Step 3/3
-    </title>
-
+    <title>College Registration - Step 3/3</title>
     <link rel="stylesheet" href="style.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-          rel="stylesheet">
-
 </head>
-
-
 <body>
-
-
-<div class="background-circle circle-one"></div>
-<div class="background-circle circle-two"></div>
-<div class="background-circle circle-three"></div>
-
-
-
-<div class="container step3-container">
-
-
-    <!-- Header -->
-
-    <div class="page-header">
-
-        <div class="logo">
-            🎓
+    <div class="container step3-container">
+        <div class="portal-header">
+            <h2>Account Verification (Step 3/3)</h2>
+            <p>Final security checks & course selection</p>
         </div>
 
-
-        <div>
-
-            <h1>
-                College Admission Portal
-            </h1>
-
-            <p>
-                Verification & Account Setup
-            </p>
-
-        </div>
-
-
-    </div>
-
-
-
-    <!-- Progress -->
-
-    <div class="progress-section">
-
-
-        <div class="progress-text">
-
-            <span>
-                Registration Progress
-            </span>
-
-            <b>
-                Step 3 of 3
-            </b>
-
-        </div>
-
-
-
-        <div class="progress-bar">
-
-            <div class="progress-fill">
-
+        <form onsubmit="completeRegistration(event)">
+            <div class="form-group">
+                <label for="course">Program Applied For</label>
+                <select id="course" required>
+                    <option value="" disabled selected>Select a Program</option>
+                    <option value="B.Tech CS">B.Tech Computer Science</option>
+                    <option value="B.Tech ME">B.Tech Mechanical</option>
+                    <option value="BCA">BCA</option>
+                </select>
             </div>
 
-        </div>
-
-
-
-        <div class="steps">
-
-
-            <div class="step completed">
-
-                <span>
-                    ✓
-                </span>
-
-                Personal
-
+            <div class="form-group verification-card">
+                <label for="email">Student Email Address</label>
+                <input type="email" id="email" required placeholder="Used for portal login">
+                <button type="button" class="btn btn-verify" id="btn-email-verify" onclick="sendOTP('email')">Verify Email via OTP</button>
+                <span id="emailSuccess" class="success-text">✔ Email Verified Successfully!</span>
+                
+                <div id="email-otp-section" class="otp-section">
+                    <label for="emailOTP">Enter 6-Digit Email OTP</label>
+                    <input type="text" id="emailOTP" placeholder="Enter OTP">
+                    <button type="button" class="btn btn-verify" onclick="verifyOTP('email')">Submit Email OTP</button>
+                </div>
             </div>
 
-
-
-            <div class="step completed">
-
-                <span>
-                    ✓
-                </span>
-
-                Academic
-
+            <div class="form-group verification-card">
+                <label for="phone">Student Mobile Number</label>
+                <input type="text" id="phone" pattern="\d{10}" required placeholder="10-digit number">
+                <button type="button" class="btn btn-verify" id="btn-phone-verify" onclick="sendOTP('phone')">Verify Phone via SMS</button>
+                <span id="phoneSuccess" class="success-text">✔ Phone Verified Successfully!</span>
+                
+                <div id="phone-otp-section" class="otp-section">
+                    <label for="phoneOTP">Enter 6-Digit SMS OTP</label>
+                    <input type="text" id="phoneOTP" placeholder="Enter OTP">
+                    <button type="button" class="btn btn-verify" onclick="verifyOTP('phone')">Submit Phone OTP</button>
+                </div>
             </div>
 
-
-
-            <div class="step active">
-
-                <span>
-                    3
-                </span>
-
-                Verification
-
+            <div class="form-group">
+                <label for="password">Create Password</label>
+                <input type="password" id="password" required minlength="8" placeholder="Minimum 8 characters">
+            </div>
+            
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" required placeholder="Re-enter password">
             </div>
 
+            <div class="form-group captcha-block">
+                <label for="captcha">Anti-Bot Verification</label>
+                <div class="captcha-container">
+                    <canvas id="captcha-canvas" width="180" height="50" onclick="generateCaptcha()"></canvas>
+                    <button type="button" class="refresh-btn" onclick="generateCaptcha()" title="Refresh CAPTCHA">↻</button>
+                </div>
+                <input type="text" id="captcha" required placeholder="Enter CAPTCHA exactly as shown">
+            </div>
 
-        </div>
-
-
+            <div id="error-msg" class="error"></div>
+            
+            <div class="btn-group">
+                <button type="button" class="btn btn-secondary" onclick="navigateTo('register_2.html', event)">← Go Back</button>
+                <button type="submit" class="btn btn-accent">Complete Registration</button>
+            </div>
+        </form>
     </div>
-
-
-
-
-
-<form onsubmit="completeRegistration(event)">
-
-
-
-
-
-<!-- Course Section -->
-
-<section class="form-card blue-card">
-
-
-    <div class="card-title">
-
-        <div class="icon">
-            📚
-        </div>
-
-
-        <div>
-
-            <h2>
-                Program Selection
-            </h2>
-
-            <p>
-                Choose the course you want to apply for.
-            </p>
-
-        </div>
-
-
-    </div>
-
-
-
-    <div class="form-group">
-
-
-        <label>
-            Program Applied For
-        </label>
-
-
-        <select id="course" required>
-
-
-            <option value="" disabled selected>
-                Select a Program
-            </option>
-
-
-            <option value="B.Tech CS">
-                B.Tech Computer Science
-            </option>
-
-
-            <option value="B.Tech ME">
-                B.Tech Mechanical Engineering
-            </option>
-
-
-            <option value="BCA">
-                Bachelor of Computer Application
-            </option>
-
-
-            <option value="BBA">
-                Bachelor of Business Administration
-            </option>
-
-
-        </select>
-
-
-    </div>
-
-
-
-</section>
-
-
-
-
-
-
-
-<!-- Email Verification -->
-
-
-<section class="form-card green-card">
-
-
-<div class="card-title">
-
-
-    <div class="icon">
-        📧
-    </div>
-
-
-    <div>
-
-        <h2>
-            Email Verification
-        </h2>
-
-        <p>
-            Verify your email address for portal login.
-        </p>
-
-    </div>
-
-
-</div>
-
-
-
-
-<div class="form-group">
-
-
-<label>
-    Student Email Address
-</label>
-
-
-<input 
-type="email"
-id="email"
-placeholder="example@gmail.com"
-required>
-
-
-
-<button 
-type="button"
-class="verify-btn"
-onclick="sendOTP('email')">
-
-Send Email OTP
-
-</button>
-
-
-
-<span 
-id="emailSuccess"
-class="success-text">
-
-✔ Email Verified Successfully!
-
-</span>
-
-
-
-
-<div 
-id="email-otp-section"
-class="otp-box">
-
-
-<label>
-Enter 6 Digit Email OTP
-</label>
-
-
-<input 
-type="text"
-id="emailOTP"
-maxlength="6"
-placeholder="Enter OTP">
-
-
-
-<button 
-type="button"
-class="verify-btn"
-onclick="verifyOTP('email')">
-
-Verify Email OTP
-
-</button>
-
-
-</div>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-<!-- Phone Verification -->
-
-
-<section class="form-card purple-card">
-
-
-<div class="card-title">
-
-
-<div class="icon">
-📱
-</div>
-
-
-<div>
-
-<h2>
-Mobile Verification
-</h2>
-
-
-<p>
-Verify your mobile number using SMS OTP.
-</p>
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-<div class="form-group">
-
-
-<label>
-Student Mobile Number
-</label>
-
-
-<input
-type="text"
-id="phone"
-maxlength="10"
-pattern="[0-9]{10}"
-placeholder="Enter 10 digit mobile number"
-required>
-
-
-
-
-<button
-type="button"
-class="verify-btn"
-onclick="sendOTP('phone')">
-
-Send SMS OTP
-
-</button>
-
-
-
-
-<span
-id="phoneSuccess"
-class="success-text">
-
-✔ Phone Verified Successfully!
-
-</span>
-
-
-
-
-
-<div 
-id="phone-otp-section"
-class="otp-box">
-
-
-<label>
-Enter 6 Digit SMS OTP
-</label>
-
-
-<input
-type="text"
-id="phoneOTP"
-maxlength="6"
-placeholder="Enter OTP">
-
-
-
-
-<button
-type="button"
-class="verify-btn"
-onclick="verifyOTP('phone')">
-
-Verify Phone OTP
-
-</button>
-
-
-
-</div>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- Password Section -->
-
-
-<section class="form-card orange-card">
-
-
-<div class="card-title">
-
-
-<div class="icon">
-🔐
-</div>
-
-
-<div>
-
-<h2>
-Create Account Password
-</h2>
-
-
-<p>
-Create a secure password for login.
-</p>
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-<div class="form-group">
-
-
-<label>
-Create Password
-</label>
-
-
-<input
-type="password"
-id="password"
-placeholder="Minimum 8 characters"
-minlength="8"
-required>
-
-
-</div>
-
-
-
-
-
-<div class="form-group">
-
-
-<label>
-Confirm Password
-</label>
-
-
-<input
-type="password"
-id="confirmPassword"
-placeholder="Re-enter password"
-required>
-
-
-</div>
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-
-<!-- CAPTCHA -->
-
-
-<section class="form-card captcha-card">
-
-
-<div class="card-title">
-
-
-<div class="icon">
-🤖
-</div>
-
-
-<div>
-
-<h2>
-Security Verification
-</h2>
-
-
-<p>
-Complete CAPTCHA verification.
-</p>
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-<div class="captcha-container">
-
-
-<canvas
-id="captcha-canvas"
-width="200"
-height="60"
-onclick="generateCaptcha()">
-
-</canvas>
-
-
-
-
-<button
-type="button"
-class="refresh-btn"
-onclick="generateCaptcha()">
-
-↻
-
-</button>
-
-
-
-</div>
-
-
-
-
-<input
-type="text"
-id="captcha"
-placeholder="Enter CAPTCHA exactly"
-required>
-
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- Declaration -->
-
-
-<section class="declaration">
-
-
-<label>
-
-
-<input 
-type="checkbox"
-required>
-
-
-I confirm that all information provided is correct and I agree to the admission terms and conditions.
-
-
-
-</label>
-
-
-</section>
-
-
-
-
-
-
-
-<div id="error-msg"
-class="error">
-
-</div>
-
-
-
-
-
-
-
-<!-- Buttons -->
-
-
-<div class="button-area">
-
-
-<button
-type="button"
-class="btn back-btn"
-onclick="navigateTo('register_2.html',event)">
-
-← Go Back
-
-</button>
-
-
-
-
-<button
-type="submit"
-class="btn submit-btn">
-
-Complete Registration 🎉
-
-</button>
-
-
-</div>
-
-
-
-
-
-</form>
-
-
-
-
-
-<footer>
-
-🔒 Your information is encrypted and securely stored.
-
-</footer>
-
-
-
-
-</div>
-
-
-
-
-<script src="app.js"></script>
-
-
+    <script src="app.js"></script>
 </body>
-
 </html>
