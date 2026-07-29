@@ -245,3 +245,270 @@ function hideMessages() {
     errorMessage.textContent = "";
     successMessage.textContent = "";
 }
+const form = document.getElementById("registrationForm");
+const formMessage = document.getElementById("formMessage");
+
+/*
+    Restore previously entered form information
+    when the page opens.
+*/
+window.addEventListener("DOMContentLoaded", function () {
+    restoreFormData();
+    setMaximumDateOfBirth();
+});
+
+/*
+    Prevent users from selecting a future date of birth.
+*/
+function setMaximumDateOfBirth() {
+    const dateInput = document.getElementById("dob");
+
+    if (!dateInput) {
+        return;
+    }
+
+    const today = new Date();
+    const formattedDate = today.toISOString().split("T")[0];
+
+    dateInput.max = formattedDate;
+}
+
+/*
+    Automatically convert PAN number to uppercase.
+*/
+document.getElementById("pan").addEventListener("input", function () {
+    this.value = this.value.toUpperCase();
+});
+
+/*
+    Allow numbers only in selected fields.
+*/
+const numericFields = [
+    "aadhar",
+    "guardianPhone",
+    "pin"
+];
+
+numericFields.forEach(function (fieldId) {
+    const input = document.getElementById(fieldId);
+
+    input.addEventListener("input", function () {
+        this.value = this.value.replace(/[^0-9]/g, "");
+    });
+});
+
+/*
+    Save the form data while the user is entering information.
+*/
+form.addEventListener("input", function () {
+    saveFormData();
+});
+
+form.addEventListener("change", function () {
+    saveFormData();
+});
+
+/*
+    Store form data in localStorage.
+*/
+function saveFormData() {
+    const formData = {};
+
+    const fields = form.querySelectorAll(
+        "input:not([type='checkbox']), select, textarea"
+    );
+
+    fields.forEach(function (field) {
+        formData[field.id] = field.value;
+    });
+
+    const declaration = document.getElementById("declaration");
+    formData.declaration = declaration.checked;
+
+    localStorage.setItem(
+        "collegeRegistrationStep1",
+        JSON.stringify(formData)
+    );
+}
+
+/*
+    Restore saved data.
+*/
+function restoreFormData() {
+    const savedData = localStorage.getItem(
+        "collegeRegistrationStep1"
+    );
+
+    if (!savedData) {
+        return;
+    }
+
+    const formData = JSON.parse(savedData);
+
+    Object.keys(formData).forEach(function (fieldId) {
+        const field = document.getElementById(fieldId);
+
+        if (!field) {
+            return;
+        }
+
+        if (field.type === "checkbox") {
+            field.checked = Boolean(formData[fieldId]);
+        } else {
+            field.value = formData[fieldId];
+        }
+    });
+}
+
+/*
+    Validate and move to the next registration page.
+*/
+function navigateTo(page, event) {
+    event.preventDefault();
+
+    hideMessage();
+
+    if (!form.checkValidity()) {
+        form.reportValidity();
+
+        showMessage(
+            "Please complete all required fields correctly.",
+            "error"
+        );
+
+        focusFirstInvalidField();
+
+        return;
+    }
+
+    const dateOfBirth = document.getElementById("dob").value;
+
+    if (!validateDateOfBirth(dateOfBirth)) {
+        showMessage(
+            "Please enter a valid date of birth.",
+            "error"
+        );
+
+        document.getElementById("dob").focus();
+
+        return;
+    }
+
+    const aadhaar = document.getElementById("aadhar").value;
+
+    if (aadhaar.length !== 12) {
+        showMessage(
+            "Aadhaar number must contain exactly 12 digits.",
+            "error"
+        );
+
+        document.getElementById("aadhar").focus();
+
+        return;
+    }
+
+    const panNumber = document.getElementById("pan").value;
+    const panPattern = /^[A-Z]{5}[0-9]{4}[A-Z]$/;
+
+    if (!panPattern.test(panNumber)) {
+        showMessage(
+            "Please enter a valid PAN number, such as ABCDE1234F.",
+            "error"
+        );
+
+        document.getElementById("pan").focus();
+
+        return;
+    }
+
+    const phoneNumber =
+        document.getElementById("guardianPhone").value;
+
+    if (phoneNumber.length !== 10) {
+        showMessage(
+            "Guardian contact number must contain 10 digits.",
+            "error"
+        );
+
+        document.getElementById("guardianPhone").focus();
+
+        return;
+    }
+
+    saveFormData();
+
+    showMessage(
+        "Step 1 completed successfully. Opening academic details...",
+        "success"
+    );
+
+    /*
+        The next page opens after a small delay so that
+        the success message can be seen.
+    */
+    setTimeout(function () {
+        window.location.href = page;
+    }, 700);
+}
+
+/*
+    Check whether the date is valid and not in the future.
+*/
+function validateDateOfBirth(dateValue) {
+    if (!dateValue) {
+        return false;
+    }
+
+    const selectedDate = new Date(dateValue);
+    const currentDate = new Date();
+
+    return selectedDate <= currentDate;
+}
+
+/*
+    Focus the first invalid field.
+*/
+function focusFirstInvalidField() {
+    const invalidField = form.querySelector(":invalid");
+
+    if (invalidField) {
+        invalidField.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+        invalidField.focus();
+    }
+}
+
+/*
+    Display form message.
+*/
+function showMessage(message, type) {
+    formMessage.textContent = message;
+    formMessage.className = "form-message " + type;
+
+    formMessage.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+}
+
+/*
+    Hide the current message.
+*/
+function hideMessage() {
+    formMessage.textContent = "";
+    formMessage.className = "form-message";
+}
+
+/*
+    Clear saved registration details.
+*/
+function clearSavedForm() {
+    localStorage.removeItem("collegeRegistrationStep1");
+
+    setTimeout(function () {
+        hideMessage();
+    }, 50);
+}
