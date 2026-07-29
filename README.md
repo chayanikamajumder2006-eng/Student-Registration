@@ -2,109 +2,29 @@ output link given in the link :
 https://chayanikamajumder2006-eng.github.io/Student-Registration/
 
 
-# 🎓 Student Login & Registration Portal
+# Student Login & Multi-Step Registration Portal
 
-## 📌 Project Overview
-
-The **Student Login & Registration Portal** is a web-based application designed to simplify the student admission and registration process. It provides a secure and user-friendly interface where students can create accounts, enter personal details, submit academic information, verify their identity, and complete the registration process.
-
-The project focuses on creating a modern registration experience with multiple steps, form validation, security verification, and a responsive design.
+A dynamic, multi-step web application built with HTML5, CSS3, and JavaScript. This portal provides a registration and login system for students, including form data persistence, mock OTP verification, canvas-generated CAPTCHA security, and input validation.
 
 ---
 
-# 🚀 Features
+## 🚀 Features
 
-## 🔐 Student Login Portal
-
-- Student login using registered email and password
-- CAPTCHA-based security verification
-- Password visibility toggle
-- Remember me option
-- Forgot password option
-- Secure login interface
+* **Multi-Step Form Navigation**: Splits registration into logical steps (Personal Details, Academic Records, Account Verification) without losing entered progress.
+* **Session Persistence**: Form fields automatically persist in `sessionStorage` when navigating between steps or refreshing.
+* **Canvas CAPTCHA Engine**: Client-side canvas CAPTCHA with noise lines and randomized character rotations to block automated submissions.
+* **Mock OTP Verification**: Simulated 2-Factor Authentication (Email & Phone SMS) using interactive modals and auto-generated OTPs.
+* **LocalStorage User Database**: Persists registered student records in the browser's `localStorage` for instant testing against the login portal.
+* **Modern & Responsive UI**: Glassmorphism design system featuring CSS CSS variables, grid/flexbox layouts, hover animations, and subtle gradients.
 
 ---
 
-## 📝 Multi-Step Registration System
+## 📁 File Structure
 
-The registration process is divided into three steps:
-
-### Step 1: Personal Details
-
-Includes:
-
-- Full name
-- Date of birth
-- Gender
-- Blood group
-- Religion
-- Caste category
-- Aadhaar number
-- PAN card details
-- Passport information
-- Physical attributes
-- Family background
-- Permanent address details
-
-
-### Step 2: Academic & Extracurricular Details
-
-Includes:
-
-- Class 10 academic information
-- Class 12 academic information
-- Board details
-- Roll number
-- Percentage / CGPA
-- Subject-wise marks
-- Hobbies and interests
-- Sports achievements
-- NCC/NSS participation
-- Lifestyle information
-
-
-### Step 3: Verification & Account Setup
-
-Includes:
-
-- Course/program selection
-- Email verification using OTP
-- Mobile number verification
-- Password creation
-- CAPTCHA verification
-- Final registration submission
-
----
-
-# 🎨 Design Features
-
-- Modern gradient UI design
-- Responsive layout for mobile and desktop
-- Colorful section-based forms
-- Glassmorphism effects
-- Smooth animations
-- Attractive buttons and input fields
-- User-friendly navigation
-
----
-
-# 🛠️ Technologies Used
-
-## Frontend Technologies
-
-- HTML5
-- CSS3
-- JavaScript
-
-## Concepts Implemented
-
-- Form handling
-- Client-side validation
-- Local Storage
-- CAPTCHA generation
-- OTP verification system
-- Responsive web design
-
----
-
-# 📂 Project Structure
+```text
+├── index.html         # Student Login Portal (Entry point)
+├── register_1.html    # Step 1: Personal, Physical, Family & Address Details
+├── register_2.html    # Step 2: Class 10/12 Marks, Extracurriculars & Hobbies
+├── register_3.html    # Step 3: Program Selection, OTP Verification & Credentials
+├── style.css          # Unified custom stylesheet and design variables
+└── app.js             # Logic for navigation, storage, CAPTCHA, OTP, and validation
