@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Registration | Step 2 of 3</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="background">
+        <div class="circle circle1"></div>
+        <div class="circle circle2"></div>
+        <div class="circle circle3"></div>
+    </div>
+
+    <div class="container">
+
+        <!-- Header -->
+
+        <div class="header">
+
+            <div class="logo">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+
+            <div class="header-text">
+                <h1>College Admission Portal</h1>
+                <p>Academic & Extracurricular Details</p>
+            </div>
+
+        </div>
+
+        <!-- Progress -->
+
+        <div class="progress-box">
+
+            <div class="progress-top">
+                <span>Registration Progress</span>
+                <span>Step 2 / 3</span>
+            </div>
+
+            <div class="progress">
+                <div class="progress-fill"></div>
+            </div>
+
+            <div class="step-list">
+
+                <div class="step completed">
+                    ✔ Personal
+                </div>
+
+                <div class="step active">
+                    📚 Academic
+                </div>
+
+                <div class="step">
+                    📄 Verification
+                </div>
+
+            </div>
+
+        </div>
+
+        <form id="academicForm"
+            onsubmit="navigateTo('register_3.html',event)">
+
+            <!-- ============================= -->
+
+            <div class="card blue">
+
+                <div class="card-title">
+
+                    <i class="fa-solid fa-school"></i>
+
+                    <h2>Class 10 Details</h2>
+
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group full">
+
+                        <label>School Name</label>
+
+                        <input type="text"
+                            id="sch10"
+                            placeholder="Enter School Name"
+                            required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Board Name</label>
+
+                        <input type="text"
+                            id="brd10"
+                            placeholder="CBSE / ICSE / WBBSE"
+                            required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Roll Number</label>
+
+                        <input type="text"
+                            id="roll10"
+                            required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Registration Number</label>
+
+                        <input type="text"
+                            id="reg10"
+                            required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Passing Year</label>
+
+                        <input type="number"
+                            id="yr10"
+                            min="1995"
+                            max="2035"
+                            required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Percentage / CGPA</label>
+
+                        <input type="number"
+                            step="0.01"
+                            id="pct10"
+                            min="0"
+                            max="100"
+                            required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>School Address</label>
+
+                        <input type="text"
+                            id="address10">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Medium</label>
+
+                        <select id="medium10">
+
+                            <option>Select</option>
+
+                            <option>English</option>
+
+                            <option>Bengali</option>
+
+                            <option>Hindi</option>
+
+                            <option>Others</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ============================= -->
+
+            <div class="card purple">
+
+                <div class="card-title">
+
+                    <i class="fa-solid fa-book-open"></i>
+
+                    <h2>Class 12 Details</h2>
+
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group full">
+
+                        <label>School / College Name</label>
+
+                        <input type="text"
+                            id="sch12"
+                            required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Board Name</label>
+
+                        <input type="text"
+                            id="brd12"
+                            required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Roll Number</label>
+
+                        <input type="text"
+                            id="roll12"
+                            required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Registration Number</label>
+
+                        <input type="text"
+                            id="reg12">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Passing Year</label>
+
+                        <input type="number"
+                            id="yr12"
+                            required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Overall Percentage</label>
+
+                        <input type="number"
+                            id="pct12"
+                            step="0.01"
+                            required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Stream</label>
+
+                        <select id="stream">
+
+                            <option>Select</option>
+
+                            <option>Science</option>
+
+                            <option>Commerce</option>
+
+                            <option>Arts</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>School Address</label>
+
+                        <input type="text"
+                            id="address12">
+
+                    </div>
+
+                </div>
+
+            </div>
